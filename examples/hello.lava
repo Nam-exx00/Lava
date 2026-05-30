@@ -1,0 +1,9 @@
+package main;
+
+public class Hello
+{
+    public void main()
+    {
+        System.screen.msg.create("Hello, World!");
+    }
+}

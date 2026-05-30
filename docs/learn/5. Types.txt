@@ -1,0 +1,27 @@
+Can you tried output the number? Can you have encountered the error?
+Now, let's learn the type!
+
+Type are like genders. Has 'String', 'Char' and more. You can't use number output, because the 'Outputer' only can output 'String' type data or 'Char' data.
+
+'String' has many characters, but save it or output it is slower than 'Char'.
+'Char' only has one character, but save it or output it is very fast.
+
+Before, we learned variable. Now, you can use type to create variables.
+
+Example:
+	public class Types
+	{
+		public void main()
+		{
+			String a = "ABCDE";
+			//Warning: You only can use single quotes to represent 'Char'.
+			Char b = 'F';
+			System.screen.msg.create(a);
+			System.screen.msg.create(b);
+		}
+	}
+
+Ready to code? Try write it!
+
+Nam_exx00
+5/31/2026

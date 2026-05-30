@@ -1,0 +1,27 @@
+Code:
+	public class Hello
+	{
+		public void main()
+		{
+			System.screen.msg.create("Hello, World!");
+		}
+	}
+Did you still remember it? If you forget it, let's learn 'Note'!
+
+In Lava, 'Note' is line starts double slashes, use '//' to indicate.
+
+Example:
+	public class Has_slashes_hello
+	{
+		//Main
+		public void main()
+		{
+			//Output to terminal
+			System.screen.msg.create("Hello, World!");
+		}
+	}
+
+Try it!
+
+By Nam_exx00
+5/30/2026

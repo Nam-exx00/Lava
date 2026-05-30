@@ -1,0 +1,20 @@
+Did you want to save your text in memory? Now, let's start!
+
+In Lava, you can use 'var' to save. 'var' is like a member, has name and data.
+
+Code:
+	public class Hello_in_variable
+	{
+		public void main()
+		{
+			var want_to_say = "Hello, World!"; 
+			System.screen.msg.create(want_to_say);
+		}
+	}
+
+The code works step:First, find 'main'. Then, save the named 'want_to_say' variable to memory. Finally, output the variable.
+
+Have you learned it?
+
+Nam_exx00
+5/31/2026

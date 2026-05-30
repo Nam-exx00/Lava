@@ -1,0 +1,20 @@
+If you want to further learn Lava, let's continue!
+
+Code:
+	public class Hello
+	{
+		public void main()
+		{
+			System.screen.msg.create("Hello, World!");
+		}
+	}
+Mean:
+	public -> You can access in root directory.
+	class -> Class, like a folder.
+	void -> Function, like a file.
+	System.screen.msg.create -> A syntax, can output text.
+
+Did you understand? If you understand, goa to the page 3!
+
+By Nam_exx00
+5/30/2026

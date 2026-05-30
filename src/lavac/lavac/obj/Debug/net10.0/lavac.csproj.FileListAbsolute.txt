@@ -1,0 +1,28 @@
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\lavac.GeneratedMSBuildEditorConfig.editorconfig
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\lavac.AssemblyInfoInputs.cache
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\lavac.AssemblyInfo.cs
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\lavac.csproj.CoreCompileInputs.cache
+C:\Temp Project\Lava\lavac\lavac\bin\Debug\net10.0\lavac.exe
+C:\Temp Project\Lava\lavac\lavac\bin\Debug\net10.0\lavac.deps.json
+C:\Temp Project\Lava\lavac\lavac\bin\Debug\net10.0\lavac.runtimeconfig.json
+C:\Temp Project\Lava\lavac\lavac\bin\Debug\net10.0\lavac.dll
+C:\Temp Project\Lava\lavac\lavac\bin\Debug\net10.0\lavac.pdb
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\lavac.dll
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\refint\lavac.dll
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\lavac.pdb
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\lavac.genruntimeconfig.cache
+C:\Temp Project\Lava\lavac\lavac\obj\Debug\net10.0\ref\lavac.dll
+D:\Projects\Lava\lavac\lavac\bin\Debug\net10.0\lavac.exe
+D:\Projects\Lava\lavac\lavac\bin\Debug\net10.0\lavac.deps.json
+D:\Projects\Lava\lavac\lavac\bin\Debug\net10.0\lavac.runtimeconfig.json
+D:\Projects\Lava\lavac\lavac\bin\Debug\net10.0\lavac.dll
+D:\Projects\Lava\lavac\lavac\bin\Debug\net10.0\lavac.pdb
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\lavac.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\lavac.AssemblyInfoInputs.cache
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\lavac.AssemblyInfo.cs
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\lavac.csproj.CoreCompileInputs.cache
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\lavac.dll
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\refint\lavac.dll
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\lavac.pdb
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\lavac.genruntimeconfig.cache
+D:\Projects\Lava\lavac\lavac\obj\Debug\net10.0\ref\lavac.dll

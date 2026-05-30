@@ -1,0 +1,37 @@
+Index:
+	1.Download the lavac compiler.
+	2.Add to path.
+	3.Try it!
+
+1.Download the lava compiler
+
+That too easy, use your web browser download.
+Warning: The compiler only works in Windows. If you are using other OS, you can try use Wine.
+
+2.Add to path
+	1.Press Win + X, select 'System'.
+	2.Click 'Advanced system settings'
+	3.Click 'Environment variable'
+	4.Click 'Path' in 'User variable' or 'System variable'
+	5.Click 'Create', input lavac folder path.
+	6.Restart the terminal.
+
+3.Try it!
+
+create 'hello.lava', write:
+package main;
+
+public class Hello
+{
+	public void main()
+	{
+		System.screen.msg.create("Hello, World!");
+	}
+}
+
+Save file, input 'lavac build exe hello.lava hello.exe'.
+Execute now!
+You should see 'Hello, World!' in the terminal.
+
+By Nam_exx00
+5/30/2026

@@ -1,0 +1,14 @@
+D:\Projects\Lava\lavar\lavar\bin\Release\net10.0\lavar.exe
+D:\Projects\Lava\lavar\lavar\bin\Release\net10.0\lavar.deps.json
+D:\Projects\Lava\lavar\lavar\bin\Release\net10.0\lavar.runtimeconfig.json
+D:\Projects\Lava\lavar\lavar\bin\Release\net10.0\lavar.dll
+D:\Projects\Lava\lavar\lavar\bin\Release\net10.0\lavar.pdb
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\lavar.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\lavar.AssemblyInfoInputs.cache
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\lavar.AssemblyInfo.cs
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\lavar.csproj.CoreCompileInputs.cache
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\lavar.dll
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\refint\lavar.dll
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\lavar.pdb
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\lavar.genruntimeconfig.cache
+D:\Projects\Lava\lavar\lavar\obj\Release\net10.0\ref\lavar.dll

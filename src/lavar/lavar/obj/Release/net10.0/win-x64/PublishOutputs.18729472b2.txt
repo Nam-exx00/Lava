@@ -1,0 +1,2 @@
+D:\Projects\Lava\lavar\lavar\bin\Release\net10.0\win-x64\publish\lavar.pdb
+D:\Projects\Lava\lavar\lavar\bin\Release\net10.0\win-x64\publish\lavar.exe
