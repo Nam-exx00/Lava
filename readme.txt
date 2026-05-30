@@ -1,0 +1,2 @@
+Lava is a language. The syntax is like Java but can give you more control.
+The lavac compile speed is very fast, whether it is classes or Windows execute. If you want to try now, you can download lavac and compile your own code. And if you want to learn, more tutorial in the folder.
