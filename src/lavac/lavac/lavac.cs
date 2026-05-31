@@ -26,7 +26,7 @@ class lavac
         for (long i = 0; i < lines.LongLength; i++)
         {
             var backupp = path;
-            var line = lines[i].Trim();
+            var line = System.Text.RegularExpressions.Regex.Unescape(lines[i].Trim());
             bool safe = true;
             bool publiced = false;
             if (string.IsNullOrEmpty(line) || line.StartsWith("//")) continue;
@@ -108,7 +108,7 @@ class lavac
                     return "(Char)" + line[1];
                 }
             }
-            else if (line.StartsWith("library")) Run(File.ReadAllText(@"./library/" + line[7..].Trim().Replace('.','\\')));
+            else if (line.StartsWith("library")) Run(File.ReadAllText(@"./library/" + line[7..].Trim().Replace('.', '\\')));
             else if (line.StartsWith("package")) package = line[7..].Trim();
             else if (line.StartsWith("System.screen.msg.create"))
             {
@@ -130,11 +130,38 @@ class lavac
                     Output.Add((byte)c);
                     Output.Add(0xB0);
                 }
-                else if (result.StartsWith("(Address)(Char)"))
+                else if (result.StartsWith("(Byte)"))
                 {
-                    Output.Add(0xA0);
-                    Output.Add(byte.Parse(result[15..]));
-                    Output.Add(0xB3);
+                    var c = result[6..];
+                    for (int j = 0; j < c.Length; j++)
+                    {
+                        Output.Add(0xA0);
+                        Output.Add((byte)(byte.Parse(c[j].ToString()) + 48));
+                        Output.Add(0xB0);
+                    }
+                }
+                else if (result.StartsWith("(Address)(Byte)"))
+                {
+                    var c = result[6..];
+                    for (int j = 0; j < c.Length; j++)
+                    {
+                        Output.Add(0xA0);
+                        Output.Add((byte)(byte.Parse(c[j].ToString()) + 48));
+                        Output.Add(0xB0);
+                    }
+                }
+                else if (result.StartsWith("(Address)(Bit["))
+                {
+                    int closeBracket = result.IndexOf(']');
+                    int len = int.Parse(result[14..closeBracket]);
+                    int addr = int.Parse(result[(closeBracket + 2)..]);
+
+                    for (int j = 0; j < len; j++)
+                    {
+                        Output.Add(0xA3);
+                        Output.Add((byte)(addr + j));
+                        Output.Add(0xB0);
+                    }
                 }
                 else if (result.StartsWith("(Address)(Char["))
                 {
@@ -547,20 +574,196 @@ class lavac
                 }
                 else if (result.StartsWith("(Address)(Bool)"))
                 {
+                    int addr = int.Parse(result[15..]);
+
+                    // 加载布尔值到 slot2
                     Output.Add(0xA5);
-                    Output.Add(byte.Parse(result[15..]));
+                    Output.Add((byte)addr);
+
+                    // 取反：比较 test == 0
                     Output.Add(0xA0);
-                    Output.Add((byte)(Output.Count + 2));
+                    Output.Add(0x00);
+                    Output.Add(0xD0);  // slot2 = (test == 0)
+
+                    // 记录跳转指令的位置
+                    int jumpPos = Output.Count;
+                    Output.Add(0xA0);
+                    Output.Add(0x00);  // 占位符
                     Output.Add(0xC2);
+
+                    // 编译 if 体
                     Run(extract);
+
+                    // 计算 if 体结束后的地址，回填跳转目标
+                    int afterIfBody = Output.Count;
+                    Output[jumpPos + 1] = (byte)afterIfBody;
                 }
                 //Run(extract);
                 // 保存循环体
             }
+            else if (line.StartsWith("while"))
+            {
+                string whileLine = line[5..].Trim();
+                string condition;
+                int bracePos = whileLine.IndexOf('{');
+
+                if (bracePos >= 0)
+                {
+                    condition = whileLine[..bracePos].Trim();
+                }
+                else
+                {
+                    condition = whileLine;
+                }
+
+                // 记录循环开始的位置
+                int loopStart = Output.Count;
+
+                string result = Run(condition);
+
+                string extract = "";
+                int balance = 0;
+
+                // 提取循环体（与 if 相同的逻辑）
+                if (bracePos >= 0 && whileLine.Contains('{'))
+                {
+                    string remaining = whileLine[(bracePos + 1)..];
+                    if (remaining.Contains('}') && !remaining[..remaining.IndexOf('}')].Contains('{'))
+                    {
+                        extract = remaining[..remaining.IndexOf('}')].Trim();
+                    }
+                    else
+                    {
+                        extract = remaining;
+                        balance = 1;
+                        for (int j = 0; j < extract.Length; j++)
+                        {
+                            if (extract[j] == '{') balance++;
+                            else if (extract[j] == '}') balance--;
+                        }
+                        while (balance > 0 && i + 1 < lines.Length)
+                        {
+                            i++;
+                            string nextLine = lines[i];
+                            for (int j = 0; j < nextLine.Length; j++)
+                            {
+                                if (nextLine[j] == '{') balance++;
+                                else if (nextLine[j] == '}')
+                                {
+                                    balance--;
+                                    if (balance == 0)
+                                    {
+                                        extract += "\n" + nextLine[..j];
+                                        goto EndWhile;
+                                    }
+                                }
+                            }
+                            extract += "\n" + nextLine;
+                        }
+                    }
+                }
+                else
+                {
+                    while (i + 1 < lines.Length)
+                    {
+                        i++;
+                        string nextLine = lines[i];
+                        if (nextLine.TrimStart().StartsWith('{'))
+                        {
+                            string content = nextLine.TrimStart()[1..];
+                            balance = 1;
+                            for (int j = 0; j < content.Length; j++)
+                            {
+                                if (content[j] == '{') balance++;
+                                else if (content[j] == '}')
+                                {
+                                    balance--;
+                                    if (balance == 0)
+                                    {
+                                        extract = content[..j];
+                                        goto EndWhile;
+                                    }
+                                }
+                            }
+                            extract = content;
+                            while (balance > 0 && i + 1 < lines.Length)
+                            {
+                                i++;
+                                nextLine = lines[i];
+                                for (int j = 0; j < nextLine.Length; j++)
+                                {
+                                    if (nextLine[j] == '{') balance++;
+                                    else if (nextLine[j] == '}')
+                                    {
+                                        balance--;
+                                        if (balance == 0)
+                                        {
+                                            extract += "\n" + nextLine[..j];
+                                            goto EndWhile;
+                                        }
+                                    }
+                                }
+                                extract += "\n" + nextLine;
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            extract = nextLine;
+                            goto EndWhile;
+                        }
+                    }
+                }
+
+            EndWhile:
+                extract = extract.Trim();
+
+                if (result == "(Bool)1")
+                {
+                    // 条件恒为真，生成无限循环
+                    int loopBodyStart = Output.Count;
+                    Run(extract);
+                    // 无条件跳回循环开始
+                    Output.Add(0xA0);
+                    Output.Add((byte)loopStart);
+                    Output.Add(0xC1);
+                }
+                else if (result.StartsWith("(Address)(Bool)"))
+                {
+                    int addr = int.Parse(result[15..]);
+
+                    // 加载布尔值
+                    Output.Add(0xA5);
+                    Output.Add((byte)addr);
+                    // 取反：比较 test == 0
+                    Output.Add(0xA0);
+                    Output.Add(0x00);
+                    Output.Add(0xD0);
+
+                    // 如果条件为假，跳出循环
+                    int jumpPos = Output.Count;
+                    Output.Add(0xA0);
+                    Output.Add(0x00);
+                    Output.Add(0xC2);
+
+                    // 编译循环体
+                    Run(extract);
+
+                    // 跳回循环开始
+                    Output.Add(0xA0);
+                    Output.Add((byte)loopStart);
+                    Output.Add(0xC1);
+
+                    // 回填跳出循环的地址
+                    Output[jumpPos + 1] = (byte)Output.Count;
+                }
+            }
 
             else if (line.StartsWith("var")) Run(line[3..]);
-            else if (line.StartsWith("Char")) Run(line[4..]);
-            else if (line.StartsWith("String")) Run(line[6..]);
+            else if (line.StartsWith("Char") || line.StartsWith("Byte")) Run(line[4..]);
+            else if (line.StartsWith("Int32")) Run(line[5..]);
+            else if (line.StartsWith("Int64")) Run(line[5..]);
+            else if (line.StartsWith("String") || line.StartsWith("Int128")) Run(line[6..]);
             else if (line == "True")
             {
                 return "(Bool)1";
@@ -606,6 +809,21 @@ class lavac
                             foundmem++;
                         }
 
+                    }
+                    else if (data.StartsWith("(Byte)"))
+                    {
+                        var str = data[6..];  // str = "12"
+                        varaddr.Add(foundmem);
+                        vartype.Add("(Bit[" + str.Length + "])");  // 应该是 "(Bit[2])"
+                        for (int j = 0; j < str.Length; j++)
+                        {
+                            Output.Add(0xA0);
+                            Output.Add((byte)foundmem);
+                            Output.Add(0xA1);
+                            Output.Add((byte)str[j]);  // 存储 '1', '2' 的 ASCII 码
+                            Output.Add(0xA9);
+                            foundmem++;
+                        }
                     }
                     else if (data.StartsWith("(Bool)"))
                     {

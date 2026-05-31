@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lavac")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e21b6516747171a71478b46c2a0e635456e8a88")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+642d526b5fe7f23419e9f8fc5a1a83967aab5998")]
 [assembly: System.Reflection.AssemblyProductAttribute("lavac")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lavac")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

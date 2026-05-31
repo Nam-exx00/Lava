@@ -4,6 +4,9 @@ class Program
 {
     static void Main(String[] args)
     {
+#if DEBUG
+        args = ["build","exe","test.lava","test.exe"];
+#endif
         try
         {
             if (args[0] == "build")
@@ -66,5 +69,8 @@ class Program
         {
             Console.WriteLine("Lava Compiler Helper:\n\tlavac build classes <source code> <output> -> Compile to classes file.\n\tlavac build exe <source code> <output> -> Compile to Windows execute file.\n\t lavac version -> Show the compiler version.");
         }
+#if DEBUG
+        Process.Start("test.exe").WaitForExit();
+#endif
     }
 }

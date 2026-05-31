@@ -11,7 +11,8 @@
       "RelativeMoniker": "D:0:0:{0EEA3224-91D9-F356-E4F1-EE7FF1742D1A}|lavac\\lavac.csproj|solutionrelative:lavac\\lavac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tests\\test.lava||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Lava\\src\\lavac\\lavac\\bin\\Debug\\net10.0\\test.lava||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:lavac\\bin\\Debug\\net10.0\\test.lava||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -29,28 +30,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Projects\\Lava\\src\\lavac\\lavac\\Program.cs",
-              "RelativeDocumentMoniker": "lavac\\Program.cs",
-              "ToolTip": "D:\\Projects\\Lava\\src\\lavac\\lavac\\Program.cs*",
-              "RelativeToolTip": "lavac\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAD8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T11:57:24.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "test.lava",
-              "DocumentMoniker": "D:\\Tests\\test.lava",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Tests\\test.lava",
-              "ToolTip": "D:\\Tests\\test.lava",
-              "RelativeToolTip": "..\\..\\..\\..\\Tests\\test.lava",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\Projects\\Lava\\src\\lavac\\lavac\\bin\\Debug\\net10.0\\test.lava",
+              "RelativeDocumentMoniker": "lavac\\bin\\Debug\\net10.0\\test.lava",
+              "ToolTip": "D:\\Projects\\Lava\\src\\lavac\\lavac\\bin\\Debug\\net10.0\\test.lava",
+              "RelativeToolTip": "lavac\\bin\\Debug\\net10.0\\test.lava",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-05-30T10:02:04.669Z",
+              "WhenOpened": "2026-05-31T16:31:02.745Z",
               "EditorCaption": ""
             },
             {
@@ -61,9 +49,22 @@
               "RelativeDocumentMoniker": "lavac\\lavac.cs",
               "ToolTip": "D:\\Projects\\Lava\\src\\lavac\\lavac\\lavac.cs",
               "RelativeToolTip": "lavac\\lavac.cs",
-              "ViewState": "AgIAAPIBAAAAAAAAAAAzwJ8CAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAqwKIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-28T16:06:25.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\Lava\\src\\lavac\\lavac\\Program.cs",
+              "RelativeDocumentMoniker": "lavac\\Program.cs",
+              "ToolTip": "D:\\Projects\\Lava\\src\\lavac\\lavac\\Program.cs",
+              "RelativeToolTip": "lavac\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAA9wAcAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-31T11:57:24.965Z",
               "EditorCaption": ""
             }
           ]
