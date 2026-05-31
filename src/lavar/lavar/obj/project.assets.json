@@ -81,11 +81,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Lava\\lavar\\lavar\\lavar.csproj",
+      "projectUniqueName": "D:\\Projects\\Lava\\src\\lavar\\lavar\\lavar.csproj",
       "projectName": "lavar",
-      "projectPath": "D:\\Projects\\Lava\\lavar\\lavar\\lavar.csproj",
+      "projectPath": "D:\\Projects\\Lava\\src\\lavar\\lavar\\lavar.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Lava\\lavar\\lavar\\obj\\",
+      "outputPath": "D:\\Projects\\Lava\\src\\lavar\\lavar\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",

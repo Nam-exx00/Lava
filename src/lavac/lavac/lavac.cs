@@ -108,7 +108,7 @@ class lavac
                     return "(Char)" + line[1];
                 }
             }
-            else if (line.StartsWith("library")) Run(File.ReadAllText(@"D:\Tests\library\" + line[7..].Trim().Replace('.','\\')));
+            else if (line.StartsWith("library")) Run(File.ReadAllText(@"./library/" + line[7..].Trim().Replace('.','\\')));
             else if (line.StartsWith("package")) package = line[7..].Trim();
             else if (line.StartsWith("System.screen.msg.create"))
             {
