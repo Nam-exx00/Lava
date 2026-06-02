@@ -15,6 +15,10 @@ class lavac
     static int foundmem = 0;
     public static byte[] Compile(string code)
     {
+        Output.Add((byte)'H');
+        Output.Add((byte)'o');
+        Output.Add((byte)'t');
+        Output.Add((byte)'!');
         Run(code);
         Output.Add(0xC0);
         return Output.ToArray();

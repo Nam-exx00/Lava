@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lavar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+642d526b5fe7f23419e9f8fc5a1a83967aab5998")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01e1d252ab2d0af3b4aa7304a69c6d7fe482332a")]
 [assembly: System.Reflection.AssemblyProductAttribute("lavar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lavar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
