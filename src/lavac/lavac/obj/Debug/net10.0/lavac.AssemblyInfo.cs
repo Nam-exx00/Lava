@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lavac")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5141002d24db9fef9cb59108b6b862fddc56d80b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c71a62e16ee49166a00f593ee0ee6363e712481a")]
 [assembly: System.Reflection.AssemblyProductAttribute("lavac")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lavac")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
