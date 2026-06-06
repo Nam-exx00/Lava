@@ -15,4 +15,9 @@
 		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>
 
+<PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+</PropertyGroup>
+
+
 </Project>

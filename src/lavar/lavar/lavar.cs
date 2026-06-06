@@ -1,10 +1,16 @@
 //using System.Security.Cryptography;
+//using System.Windows.Forms;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
 
 class lavar
 {
     static int mems = 65536;
     static Int128[] mem = new Int128[65536];
     static Int128[] slots = new Int128[3];
+
     public static Int128 Execute(byte[] classes)
     {
         if (classes[0] == 'H' && classes[1] == 'o' && classes[2] == 't' && classes[3] == '!')
@@ -207,6 +213,23 @@ class lavar
                             }
                             break;
                         }
+                    case 0x91:  //File read (memstart , pathlen , outindex , outlen)
+                        {
+                            var start = (int)slots[0];
+                            var pathbuffer = string.Empty;
+                            for (int j = 0; j < slots[1]; j++)
+                            {
+                                pathbuffer += mem[start + j];
+                            }
+                            var get = File.ReadAllBytes(pathbuffer);
+                            var index = (int)slots[2];
+                            for (int j = 0; j < slots[3]; j++)
+                            {
+                                mem[index + j] = get[j];
+                            }
+                            break;
+                        }
+                    
                     //Unsupported code
                     default:
                         {
