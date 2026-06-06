@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "7BQMQEs7/O8=",
+  "dgSpecHash": "IiAU4h1PM5U=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\Lava\\src\\lavar\\lavar\\lavar.csproj",
+  "projectFilePath": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavar/lavar/lavar.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.net.illink.tasks\\10.0.8\\microsoft.net.illink.tasks.10.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.8\\microsoft.netcore.app.runtime.win-x64.10.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.8\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.8.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.8\\microsoft.aspnetcore.app.runtime.win-x64.10.0.8.nupkg.sha512"
+    "/home/nam/.nuget/packages/microsoft.net.illink.tasks/10.0.8/microsoft.net.illink.tasks.10.0.8.nupkg.sha512",
+    "/home/nam/.nuget/packages/microsoft.netcore.app.runtime.win-x64/10.0.8/microsoft.netcore.app.runtime.win-x64.10.0.8.nupkg.sha512",
+    "/home/nam/.nuget/packages/microsoft.aspnetcore.app.runtime.win-x64/10.0.8/microsoft.aspnetcore.app.runtime.win-x64.10.0.8.nupkg.sha512",
+    "/home/nam/.nuget/packages/microsoft.netcore.app.host.win-x64/10.0.8/microsoft.netcore.app.host.win-x64.10.0.8.nupkg.sha512"
   ],
   "logs": []
 }

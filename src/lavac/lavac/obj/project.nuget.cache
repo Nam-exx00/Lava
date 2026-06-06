@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Hw8ZU/aJV+c=",
+  "dgSpecHash": "5OIQsiCQG24=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\Lava\\src\\lavac\\lavac\\lavac.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavac/lavac/lavac.csproj",
+  "expectedPackageFiles": [
+    "/home/nam/.nuget/packages/microsoft.netcore.app.host.linux-x64/10.0.8/microsoft.netcore.app.host.linux-x64.10.0.8.nupkg.sha512"
+  ],
   "logs": []
 }

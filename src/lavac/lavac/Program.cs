@@ -5,7 +5,7 @@ class Program
     static void Main(String[] args)
     {
 #if DEBUG
-        args = ["build","exe","test.lava","test.exe"];
+        args = ["build","linux","test.lava","test.out"];
 #endif
         try
         {
@@ -57,6 +57,30 @@ class Program
                         Console.WriteLine("Compile error:" + ex.Message);
                     }
                 }
+                else if (args[1] == "linux")
+                {
+                    var data = args[2];
+                    byte[] result = { 0xC0 };
+                    try
+                    {
+                        data = File.ReadAllText(data);
+                    }
+                    catch
+                    {
+
+                    }
+                    try
+                    {
+                        var classes = args[3] + ".classes";
+                        result = lavac.Compile(data);
+                        File.WriteAllBytes(classes, result);
+                        Process.Start("sh", $"-c \"cat ./runtime {classes} > {args[3]}\"").WaitForExit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Compile error:" + ex.Message);
+                    }
+                }
                 else
                 {
                     Console.WriteLine("Error: Unsupported option.");
@@ -70,7 +94,7 @@ class Program
             Console.WriteLine("Lava Compiler Helper:\n\tlavac build classes <source code> <output> -> Compile to classes file.\n\tlavac build exe <source code> <output> -> Compile to Windows execute file.\n\t lavac version -> Show the compiler version.");
         }
 #if DEBUG
-        Process.Start("test.exe").WaitForExit();
+        Process.Start("test.out").WaitForExit();
 #endif
     }
 }

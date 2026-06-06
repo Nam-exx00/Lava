@@ -5,6 +5,7 @@ class lavac
     static List<byte> Output = [];
     static List<string> varname = [];
     static List<int> varaddr = [];
+    static List<string> vardata = [];
     static List<string> vartype = [];
     static List<string> funcname = [];
     static List<string> funcargs = [];
@@ -32,6 +33,7 @@ class lavac
             var backupp = path;
             var line = System.Text.RegularExpressions.Regex.Unescape(lines[i].Trim());
             bool safe = true;
+            bool consted = false;
             bool publiced = false;
             if (string.IsNullOrEmpty(line) || line.StartsWith("//")) continue;
             if (line.EndsWith(';')) line = line[..(line.Length - 1)].Trim();
@@ -45,6 +47,11 @@ class lavac
             {
                 safe = false;
                 line = line[6..].Trim();
+            }
+            if (line.StartsWith("const"))
+            {
+                consted = true;
+                line = line[5..].Trim();
             }
             {
                 string name;
@@ -95,7 +102,14 @@ class lavac
                     if (line == varname[k])
                     {
                         //Console.WriteLine("[DEBUG] line eq:"+(line == varname[j]));
-                        return "(Address)" + vartype[k] + varaddr[k];
+                        if (varaddr[k] == -1)
+                        {
+                            return vartype[k] + vardata[k];
+                        }
+                        else
+                        {
+                            return "(Address)" + vartype[k] + varaddr[k];
+                        }
                     }
                 }
             }
@@ -181,6 +195,16 @@ class lavac
                 }
                 else throw new Exception("Unsupported type.");
             }
+            else if (line.StartsWith("System.keyboard.reads"))
+            {
+                Output.Add(0xA0);
+                Output.Add((byte)foundmem);
+                Output.Add(0xA1);
+                Output.Add(255);
+                foundmem += 255;
+                Output.Add(0x90);
+                return "(Address)(Char)" + (foundmem - 255);
+            }
             else if (line.StartsWith("System.keyboard.read"))
             {
                 Output.Add(0xB4);
@@ -199,6 +223,7 @@ class lavac
                     Output.Add(0xC1);
                 }
             }
+            else if (line == "System.lab.line") return "(Char)\n";
             else if (line.StartsWith("class"))
             {
                 Int128 depth = 0;
@@ -768,15 +793,33 @@ class lavac
             else if (line.StartsWith("Int32")) Run(line[5..]);
             else if (line.StartsWith("Int64")) Run(line[5..]);
             else if (line.StartsWith("String") || line.StartsWith("Int128")) Run(line[6..]);
-            else if (line == "True")
+            else if (line == "true")
             {
                 return "(Bool)1";
             }
-            else if (line == "False")
+            else if (line == "false")
             {
                 return "(Bool)0";
             }
+            else if (line == "Lab.line") return "(Char)\n";
 
+            /*else if (line.Contains("equals"))
+            {
+                try
+                {
+                    var parts = line.Split("equals",2);
+                    var left = Run(parts[0]);
+                    var right = Run(parts[1]);
+                    if (left.StartsWith("(Char)") && right.StartsWith("(Char)"))
+                    {
+                        
+                    }
+                }
+                catch
+                {
+                    
+                }
+            }*/
             else if (line.Contains('='))
             {
                 try
@@ -787,66 +830,78 @@ class lavac
                     else name = path + parts[0].Trim();
                     var data = Run(parts[1]);
                     varname.Add(name);
-                    if (data.StartsWith("(Char)"))
+                    if (consted)
                     {
-                        Output.Add(0xA0);
-                        Output.Add((byte)foundmem);
-                        Output.Add(0xA1);
-                        Output.Add((byte)data[6]);
-                        vartype.Add("(Char)");
-                        Output.Add(0xA9);
-                        varaddr.Add(foundmem);
-                        foundmem++;
+                        varaddr.Add(-1);
+                        if (data.StartsWith("(Char)"))
+                        {
+                            vartype.Add("(Char)");
+                            vardata.Add(data[6].ToString());
+                        }
                     }
-                    else if (data.StartsWith("(String)"))
+                    else
                     {
-                        var str = data[8..];
-                        varaddr.Add(foundmem);
-                        vartype.Add("(Char[" + str.Length + "])");
-                        for (int j = 0; j < str.Length; j++)
+                        vardata.Add(string.Empty);
+                        if (data.StartsWith("(Char)"))
+                        {
+                                Output.Add(0xA0);
+                                Output.Add((byte)foundmem);
+                                Output.Add(0xA1);
+                                Output.Add((byte)data[6]);
+                                vartype.Add("(Char)");
+                                Output.Add(0xA9);
+                                varaddr.Add(foundmem);
+                                foundmem++;
+                        }
+                        else if (data.StartsWith("(String)"))
+                        {
+                            var str = data[8..];
+                            varaddr.Add(foundmem);
+                            vartype.Add("(Char[" + str.Length + "])");
+                            for (int j = 0; j < str.Length; j++)
+                            {
+                                Output.Add(0xA0);
+                                Output.Add((byte)foundmem);
+                                Output.Add(0xA1);
+                                Output.Add((byte)str[j]);
+                                Output.Add(0xA9);
+                                foundmem++;
+                            }
+
+                        }
+                        else if (data.StartsWith("(Byte)"))
+                        {
+                            var str = data[6..];  // str = "12"
+                            varaddr.Add(foundmem);
+                            vartype.Add("(Bit[" + str.Length + "])");  // 应该是 "(Bit[2])"
+                            for (int j = 0; j < str.Length; j++)
+                            {
+                                Output.Add(0xA0);
+                                Output.Add((byte)foundmem);
+                                Output.Add(0xA1);
+                                Output.Add((byte)str[j]);  // 存储 '1', '2' 的 ASCII 码
+                                Output.Add(0xA9);
+                                foundmem++;
+                            }
+                        }
+                        else if (data.StartsWith("(Bool)"))
                         {
                             Output.Add(0xA0);
                             Output.Add((byte)foundmem);
                             Output.Add(0xA1);
-                            Output.Add((byte)str[j]);
+                            if (data[6] == '1') Output.Add(0x01);
+                            else Output.Add(0x00);
+                            vartype.Add("(Bool)");
                             Output.Add(0xA9);
+                            varaddr.Add(foundmem);
                             foundmem++;
                         }
-
-                    }
-                    else if (data.StartsWith("(Byte)"))
-                    {
-                        var str = data[6..];  // str = "12"
-                        varaddr.Add(foundmem);
-                        vartype.Add("(Bit[" + str.Length + "])");  // 应该是 "(Bit[2])"
-                        for (int j = 0; j < str.Length; j++)
+                        else if (data.StartsWith("(Address)(Char)"))
                         {
-                            Output.Add(0xA0);
-                            Output.Add((byte)foundmem);
-                            Output.Add(0xA1);
-                            Output.Add((byte)str[j]);  // 存储 '1', '2' 的 ASCII 码
-                            Output.Add(0xA9);
-                            foundmem++;
+                            vartype.Add("(Char)");
+                            varaddr.Add(int.Parse(data[15..]));
                         }
                     }
-                    else if (data.StartsWith("(Bool)"))
-                    {
-                        Output.Add(0xA0);
-                        Output.Add((byte)foundmem);
-                        Output.Add(0xA1);
-                        if (data[6] == '1') Output.Add(0x01);
-                        else Output.Add(0x00);
-                        vartype.Add("(Bool)");
-                        Output.Add(0xA9);
-                        varaddr.Add(foundmem);
-                        foundmem++;
-                    }
-                    else if (data.StartsWith("(Address)(Char)"))
-                    {
-                        vartype.Add("(Char)");
-                        varaddr.Add(int.Parse(data[15..]));
-                    }
-
                 }
                 catch { }
             }

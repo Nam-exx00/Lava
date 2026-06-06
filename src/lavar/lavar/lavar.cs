@@ -187,6 +187,26 @@ class lavar
                             slots[2] = slots[0] / slots[1];
                             break;
                         }
+                    //System
+                    //Potrial Extension
+                    case 0x90:  //Read a line
+                        {
+                            var memaddr = slots[0];
+                            var len = slots[1];
+                            var get = Console.ReadLine();
+                            for (int j = 0 ; j < len;j++)
+                            {
+                                try
+                                {
+                                    mem[(int)memaddr + j] = get[j];
+                                }
+                                catch
+                                {
+                                    break;
+                                }
+                            }
+                            break;
+                        }
                     //Unsupported code
                     default:
                         {

@@ -1,32 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Lava\\src\\lavac\\lavac\\lavac.csproj": {}
+    "/run/media/nam/Nam_s Data/Projects/Lava/src/lavac/lavac/lavac.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Lava\\src\\lavac\\lavac\\lavac.csproj": {
+    "/run/media/nam/Nam_s Data/Projects/Lava/src/lavac/lavac/lavac.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Lava\\src\\lavac\\lavac\\lavac.csproj",
+        "projectUniqueName": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavac/lavac/lavac.csproj",
         "projectName": "lavac",
-        "projectPath": "D:\\Projects\\Lava\\src\\lavac\\lavac\\lavac.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Lava\\src\\lavac\\lavac\\obj\\",
+        "projectPath": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavac/lavac/lavac.csproj",
+        "packagesPath": "/home/nam/.nuget/packages/",
+        "outputPath": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavac/lavac/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/nam/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/lib64/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -41,11 +39,10 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "imports": [
             "net461",
@@ -58,12 +55,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[10.0.8, 10.0.8]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/10.0.108/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -338,6 +341,11 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     }

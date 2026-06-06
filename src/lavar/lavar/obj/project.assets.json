@@ -20,13 +20,12 @@
   },
   "libraries": {
     "Microsoft.NET.ILLink.Tasks/10.0.8": {
-      "sha512": "dVbSXGIFNR5nZcv2tOLoWI+a9T4jtFd77IYjuND+QVe360qWgAF7H0WtoopYhRw/+SgpGUTyrkrh+65+ClNnfw==",
+      "sha512": "e2517uM5fMb7x4561D47EVn1pGEpnBCAM/zsbS560qXNf+x1TK1dsDWtCjF704LaSI85JeVGzUejJovF/Bf1ZQ==",
       "type": "package",
       "path": "microsoft.net.illink.tasks/10.0.8",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "Icon.png",
         "Sdk/Sdk.props",
         "THIRD-PARTY-NOTICES.TXT",
@@ -50,22 +49,6 @@
         "tools/net/illink.deps.json",
         "tools/net/illink.dll",
         "tools/net/illink.runtimeconfig.json",
-        "tools/netframework/ILLink.Tasks.dll",
-        "tools/netframework/ILLink.Tasks.dll.config",
-        "tools/netframework/Mono.Cecil.Mdb.dll",
-        "tools/netframework/Mono.Cecil.Pdb.dll",
-        "tools/netframework/Mono.Cecil.Rocks.dll",
-        "tools/netframework/Mono.Cecil.dll",
-        "tools/netframework/Sdk/Sdk.props",
-        "tools/netframework/System.Buffers.dll",
-        "tools/netframework/System.Collections.Immutable.dll",
-        "tools/netframework/System.Memory.dll",
-        "tools/netframework/System.Numerics.Vectors.dll",
-        "tools/netframework/System.Reflection.Metadata.dll",
-        "tools/netframework/System.Runtime.CompilerServices.Unsafe.dll",
-        "tools/netframework/build/Microsoft.NET.ILLink.Analyzers.props",
-        "tools/netframework/build/Microsoft.NET.ILLink.Tasks.props",
-        "tools/netframework/build/Microsoft.NET.ILLink.targets",
         "useSharedDesignerContext.txt"
       ]
     }
@@ -76,31 +59,29 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "/home/nam/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Lava\\src\\lavar\\lavar\\lavar.csproj",
+      "projectUniqueName": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavar/lavar/lavar.csproj",
       "projectName": "lavar",
-      "projectPath": "D:\\Projects\\Lava\\src\\lavar\\lavar\\lavar.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Lava\\src\\lavar\\lavar\\obj\\",
+      "projectPath": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavar/lavar/lavar.csproj",
+      "packagesPath": "/home/nam/.nuget/packages/",
+      "outputPath": "/run/media/nam/Nam_s Data/Projects/Lava/src/lavar/lavar/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/nam/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "/usr/lib64/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -115,11 +96,10 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net10.0": {
-        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.NET.ILLink.Tasks": {
@@ -146,11 +126,11 @@
             "version": "[10.0.8, 10.0.8]"
           },
           {
-            "name": "Microsoft.NETCore.App.Runtime.win-x64",
+            "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[10.0.8, 10.0.8]"
           },
           {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+            "name": "Microsoft.NETCore.App.Runtime.win-x64",
             "version": "[10.0.8, 10.0.8]"
           }
         ],
@@ -159,7 +139,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/10.0.108/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
