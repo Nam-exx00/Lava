@@ -1,5 +1,6 @@
 //using System.Security.Cryptography;
 //using System.Windows.Forms;
+using System;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
@@ -8,10 +9,10 @@ using System.Runtime.InteropServices;
 class lavar
 {
     static int mems = 65536;
-    static Int128[] mem = new Int128[65536];
-    static Int128[] slots = new Int128[3];
-
-    public static Int128 Execute(byte[] classes)
+    static long[] mem = new long[65536];
+    static long[] slots = new long[3];
+    static long foundmem = 0;
+    public static long Execute(byte[] classes)
     {
         if (classes[0] == 'H' && classes[1] == 'o' && classes[2] == 't' && classes[3] == '!')
         {
@@ -80,6 +81,117 @@ class lavar
                     case 0xA9:  //Set mem addr to char
                         {
                             mem[(int)slots[0]] = slots[1];
+                            break;
+                        }
+                    case 0xAA:  //Get found memory
+                        {
+                            //Early source:
+                            for (long j = 0; j < mem.LongLength; j++)
+                            {
+                                var k = mem.LongLength - 1 - j;
+                                if (mem[k] != 0)
+                                {
+                                    return k + 1;
+                                }
+                            }
+                            break;
+                        }
+                    case 0xAB:  //Set slot 0 to code
+                        {
+                            i++;
+                            slots[0] = Execute(new byte[] { 72, 111, 116, 33, classes[i] });
+                            break;
+                        }
+                    case 0xAC:  //Set slot 1 to code
+                        {
+                            i++;
+                            slots[1] = Execute(new byte[] { 72, 111, 116, 33, classes[i] });
+                            break;
+                        }
+                    case 0xAD:  //Set slot 2 to code
+                        {
+                            i++;
+                            slots[2] = Execute(new byte[] { 72, 111, 116, 33, classes[i] });
+                            break;
+                        }
+                    case 0xAE:  //Set slot 3 to code
+                        {
+                            i++;
+                            slots[3] = Execute(new byte[] { 72, 111, 116, 33, classes[i] });
+                            break;
+                        }
+                    case 0xAF:  //Cloner
+                        {
+                            i++;
+                            switch (classes[i])
+                            {
+                                case 0xA0:  //Clone slot 0 to slot 1
+                                    {
+                                        slots[1] = slots[0];
+                                        break;
+                                    }
+                                case 0xA1:  //Clone slot 0 to slot 2
+                                    {
+                                        slots[2] = slots[0];
+                                        break;
+                                    }
+                                case 0xA2:  //Clone slot 1 to slot 0
+                                    {
+                                        slots[0] = slots[1];
+                                        break;
+                                    }
+                                case 0xA3:  //Clone slot 1 to slot 2
+                                    {
+                                        slots[2] = slots[1];
+                                        break;
+                                    }
+                                case 0xA4:  //Clone slot 2 to slot 0
+                                    {
+                                        slots[0] = slots[2];
+                                        break;
+                                    }
+                                case 0xA5:  //Clone slot 2 to slot 1
+                                    {
+                                        slots[1] = slots[2];
+                                        break;
+                                    }
+                                case 0xA6:  //Clone slot 0 to mem addr (next byte)
+                                    {
+                                        i++;
+                                        mem[classes[i]] = slots[0];
+                                        break;
+                                    }
+                                case 0xA7:  //Clone slot 1 to mem addr (next byte)
+                                    {
+                                        i++;
+                                        mem[classes[i]] = slots[1];
+                                        break;
+                                    }
+                                case 0xA8:  //Clone slot 2 to mem addr (next byte)
+                                    {
+                                        i++;
+                                        mem[classes[i]] = slots[2];
+                                        break;
+                                    }
+                                case 0xA9:  //Clone mem addr to slot 0
+                                    {
+                                        i++;
+                                        slots[0] = mem[classes[i]];
+                                        break;
+                                    }
+                                case 0xAA:  //Clone mem addr to slot 1
+                                    {
+                                        i++;
+                                        slots[1] = mem[classes[i]];
+                                        break;
+                                    }
+                                case 0xAB:  //Clone mem addr to slot 2
+                                    {
+                                        i++;
+                                        slots[2] = mem[classes[i]];
+                                        break;
+                                    }
+                            }
                             break;
                         }
                     //IO
@@ -200,7 +312,7 @@ class lavar
                             var memaddr = slots[0];
                             var len = slots[1];
                             var get = Console.ReadLine();
-                            for (int j = 0 ; j < len;j++)
+                            for (int j = 0; j < len; j++)
                             {
                                 try
                                 {
@@ -213,7 +325,7 @@ class lavar
                             }
                             break;
                         }
-                    case 0x91:  //File read (memstart , pathlen , outindex , outlen)
+                    case 0x91:  //File read (memstart , pathlen , outindex)
                         {
                             var start = (int)slots[0];
                             var pathbuffer = string.Empty;
@@ -221,15 +333,15 @@ class lavar
                             {
                                 pathbuffer += mem[start + j];
                             }
-                            var get = File.ReadAllBytes(pathbuffer);
+                            var get = System.IO.File.ReadAllBytes(pathbuffer);
                             var index = (int)slots[2];
-                            for (int j = 0; j < slots[3]; j++)
+                            for (int j = 0; j < get.Length; j++)
                             {
                                 mem[index + j] = get[j];
                             }
                             break;
                         }
-                    
+
                     //Unsupported code
                     default:
                         {

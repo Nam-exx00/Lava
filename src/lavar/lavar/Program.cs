@@ -1,7 +1,4 @@
-﻿#if DEBUG
-lavar.Execute(File.ReadAllBytes(@"./test.classes"));
-#else
-class Program
+﻿class Program
 {
     static int Main()
     {
@@ -10,11 +7,11 @@ class Program
         try
         {
             raw = File.ReadAllBytes(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-            return (int)lavar.Execute(raw[14965039..]);
+            return (int)lavar.Execute(raw[13034786..]);
         }
         catch (Exception e)
         {
-            Console.WriteLine("Error: unknown error.");
+            Console.WriteLine("Error: " + e.Message);
             while (true)
             {
                 Console.Write('#');
@@ -25,12 +22,22 @@ class Program
                     Console.Clear();
                     Main();
                 }
-                else if (input.Equals("exit")) return 42;
-                else if (input.Equals("len")) Console.WriteLine(raw.Length);
-                else if (input.Equals("err")) Console.WriteLine(e.Message);
+                else if (input.Equals("end")) return 42;
+                else if (input.Equals("length")) Console.WriteLine(raw.Length);
+                else if (input.Equals("error")) Console.WriteLine(e.Message);
+                else if (input.StartsWith("run"))
+                {
+                    try
+                    {
+                        lavar.Execute(File.ReadAllBytes(input[3..].Trim()));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
                 else Console.WriteLine("Unsupported command.");
             }
         }
     }
 }
-#endif

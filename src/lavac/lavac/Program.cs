@@ -5,7 +5,7 @@ class Program
     static void Main(String[] args)
     {
 #if DEBUG
-        args = ["build","linux","test.lava","test.out"];
+        args = ["build","exe","test.lava","test.exe"];
 #endif
         try
         {
@@ -86,7 +86,7 @@ class Program
                     Console.WriteLine("Error: Unsupported option.");
                 }
             }
-            else if (args[0] == "version") Console.WriteLine("Lava Compiler Snapshot-20260531-00\nCopyright (C) 2026 Nam_exx00");
+            else if (args[0] == "version") Console.WriteLine("Lava Compiler Snapshot-20260608-00\nCopyright (C) 2026 Nam_exx00");
             else Console.WriteLine("Error:Unsupported option.");
         }
         catch
@@ -94,7 +94,7 @@ class Program
             Console.WriteLine("Lava Compiler Helper:\n\tlavac build classes <source code> <output> -> Compile to classes file.\n\tlavac build exe <source code> <output> -> Compile to Windows execute file.\n\t lavac version -> Show the compiler version.");
         }
 #if DEBUG
-        Process.Start("test.out").WaitForExit();
+        Process.Start("test.exe").WaitForExit();
 #endif
     }
 }

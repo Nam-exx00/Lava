@@ -22,12 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,7 +32,7 @@
               "RelativeDocumentMoniker": "lavar\\lavar.cs",
               "ToolTip": "D:\\Projects\\Lava\\src\\lavar\\lavar\\lavar.cs",
               "RelativeToolTip": "lavar\\lavar.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAA8wAYAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAFsBAAAAAAAAAAAwwGkBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-30T13:32:23.626Z",
               "EditorCaption": ""
@@ -61,10 +57,9 @@
               "RelativeDocumentMoniker": "lavar\\Program.cs",
               "ToolTip": "D:\\Projects\\Lava\\src\\lavar\\lavar\\Program.cs",
               "RelativeToolTip": "lavar\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA+wAYAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T04:23:57.126Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-29T04:23:57.126Z"
             }
           ]
         }

@@ -844,14 +844,14 @@ class lavac
                         vardata.Add(string.Empty);
                         if (data.StartsWith("(Char)"))
                         {
-                                Output.Add(0xA0);
-                                Output.Add((byte)foundmem);
-                                Output.Add(0xA1);
-                                Output.Add((byte)data[6]);
-                                vartype.Add("(Char)");
-                                Output.Add(0xA9);
-                                varaddr.Add(foundmem);
-                                foundmem++;
+                            Output.Add(0xA0);
+                            Output.Add((byte)foundmem);
+                            Output.Add(0xA1);
+                            Output.Add((byte)data[6]);
+                            vartype.Add("(Char)");
+                            Output.Add(0xA9);
+                            varaddr.Add(foundmem);
+                            foundmem++;
                         }
                         else if (data.StartsWith("(String)"))
                         {
